@@ -64,13 +64,63 @@
     <label for="carrera">Selecciona una carrera: </label>
     <select id="carrera">
       <option value="pesquera">Ingeniería Pesquera</option>
-      <!-- Aquí se añadirían más opciones en el futuro -->
     </select>
   </div>
   <div id="contenedor-malla"></div>
 
   <script>
-    const mallaPesquera = JSON.parse(`REEMPLAZAR_JSON`);
+    const mallaPesquera = [
+      {
+        semestre: 1,
+        asignaturas: [
+          {
+            nombre: "Biología Marina",
+            area: "Ciencias Básicas",
+            creditos: 4,
+            prerrequisito: "",
+            color: "#3498db",
+            aprobado: true
+          },
+          {
+            nombre: "Matemática I",
+            area: "Ciencias Básicas",
+            creditos: 5,
+            prerrequisito: "",
+            color: "#e67e22",
+            aprobado: false
+          },
+          {
+            nombre: "Química General",
+            area: "Ciencias Básicas",
+            creditos: 4,
+            prerrequisito: "",
+            color: "#2ecc71",
+            aprobado: false
+          }
+        ]
+      },
+      {
+        semestre: 2,
+        asignaturas: [
+          {
+            nombre: "Oceanografía",
+            area: "Ciencias del Mar",
+            creditos: 4,
+            prerrequisito: "Biología Marina",
+            color: "#9b59b6",
+            aprobado: false
+          },
+          {
+            nombre: "Matemática II",
+            area: "Ciencias Básicas",
+            creditos: 5,
+            prerrequisito: "Matemática I",
+            color: "#1abc9c",
+            aprobado: false
+          }
+        ]
+      }
+    ];
 
     const contenedor = document.getElementById("contenedor-malla");
 
@@ -106,12 +156,10 @@
           const prer = document.createElement("div");
           prer.textContent = asig.prerrequisito ? `Prerrequisito: ${asig.prerrequisito}` : "";
 
-          // Lógica para mostrar estrella si está aprobada
-          const aprobado = false; // Aquí podrías usar localStorage o un sistema dinámico real
-          if (aprobado) {
+          if (asig.aprobado) {
             const estrella = document.createElement("div");
             estrella.className = "estrellita";
-            estrella.textContent = "⭐"; // estrella de mar
+            estrella.textContent = "⭐";
             card.appendChild(estrella);
           }
 
