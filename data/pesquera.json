@@ -94,7 +94,7 @@
         "codigo": "JXUN55",
         "area": "Formación General",
         "color": "#C00000",
-        "prerrequisito": "",
+        "prerrequisito": "Procesos Lectores y Escriturales",
         "creditos": 2,
         "semestre": 2
       },
@@ -370,7 +370,7 @@
         "codigo": "JXUN55",
         "area": "Formación Investigativa",
         "color": "#808080",
-        "prerrequisito": "Termodinámica",
+        "prerrequisito": "Diseño y Prototipado",
         "creditos": 2,
         "semestre": 6
       },
