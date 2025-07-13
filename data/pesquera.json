@@ -1,1 +1,189 @@
-
+[
+  {
+    "semestre": 1,
+    "asignaturas": [
+      {
+        "nombre": "Biología",
+        "codigo": "JXUN55",
+        "area": "Ciencias Biológicas",
+        "color": "#3C5D0F",
+        "prerrequisito": "",
+        "creditos": 4,
+        "semestre": 1
+      },
+      {
+        "nombre": "Cálculo Diferencial",
+        "codigo": "JXUN55",
+        "area": "Ciencias Matemáticas",
+        "color": "#740063",
+        "prerrequisito": "",
+        "creditos": 4,
+        "semestre": 1
+      },
+      {
+        "nombre": "Dibujo para Ingeniería",
+        "codigo": "JXUN55",
+        "area": "Formación General",
+        "color": "#C00000",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 1
+      },
+      {
+        "nombre": "Introducción a la Ingeniería Pesquera",
+        "codigo": "JXUN55",
+        "area": "Formación Complementaria",
+        "color": "#F96F07",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 1
+      },
+      {
+        "nombre": "Procesos Lectores y Escriturales",
+        "codigo": "JXUN55",
+        "area": "Formación General",
+        "color": "#C00000",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 1
+      },
+      {
+        "nombre": "Razonamiento y Representación Matemática",
+        "codigo": "JXUN55",
+        "area": "Formación General",
+        "color": "#C00000",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 1
+      },
+      {
+        "nombre": "General English I",
+        "codigo": "JXUN55",
+        "area": "Formación Segundo Idioma",
+        "color": "#D9E1F2",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 1
+      },
+      ...
+    ]
+  },
+  {
+    "semestre": 2,
+    "asignaturas": [
+      {
+        "nombre": "Biología de Rec. Acuáticos",
+        "codigo": "JXUN55",
+        "area": "Ciencias Biológicas",
+        "color": "#3C5D0F",
+        "prerrequisito": "Biología",
+        "creditos": 3,
+        "semestre": 2
+      },
+      {
+        "nombre": "Cálculo Integral",
+        "codigo": "JXUN55",
+        "area": "Ciencias Matemáticas",
+        "color": "#740063",
+        "prerrequisito": "Cálculo Integral",
+        "creditos": 4,
+        "semestre": 2
+      },
+      {
+        "nombre": "Expresión Oral y Argumentación",
+        "codigo": "JXUN55",
+        "area": "Formación General",
+        "color": "#C00000",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 2
+      },
+      {
+        "nombre": "Física Mecanica",
+        "codigo": "JXUN55",
+        "area": "Ciencias Físicas",
+        "color": "#FFC000",
+        "prerrequisito": "Cálculo Diferencial",
+        "creditos": 4,
+        "semestre": 2
+      },
+      {
+        "nombre": "Química General",
+        "codigo": "JXUN55",
+        "area": "Ciencias Químicas",
+        "color": "#1F5616",
+        "prerrequisito": "",
+        "creditos": 4,
+        "semestre": 2
+      },
+      {
+        "nombre": "General English II",
+        "codigo": "JXUN55",
+        "area": "Formación Segundo Idioma",
+        "color": "#D9E1F2",
+        "prerrequisito": "General English I",
+        "creditos": 2,
+        "semestre": 2
+      },
+      ...
+    ]
+    },
+  {
+    "semestre": 3,
+    "asignaturas": [
+      {
+        "nombre": "Calor y Ondas",
+        "codigo": "JXUN55",
+        "area": "Ciencias Físicas",
+        "color": "#FFC000",
+        "prerrequisito": "Física Mecanica",
+        "creditos": 4,
+        "semestre": 3
+      },
+      {
+        "nombre": "Ecuaciones Diferenciales",
+        "codigo": "JXUN55",
+        "area": "Ciencias Matemáticas",
+        "color": "#740063",
+        "prerrequisito": "Cálculo Integral",
+        "creditos": 3,
+        "semestre": 3
+      },
+      {
+        "nombre": "Estática",
+        "codigo": "JXUN55",
+        "area": "Ciencias Físicas",
+        "color": "#FFC000",
+        "prerrequisito": "Física Mecanica",
+        "creditos": 3,
+        "semestre": 3
+      },
+      {
+        "nombre": "Probabilidad y Estadística",
+        "codigo": "JXUN55",
+        "area": "Ciencias Estadísticas",
+        "color": "#29196B",
+        "prerrequisito": "Cálculo Integral",
+        "creditos": 3,
+        "semestre": 3
+      },
+      {
+        "nombre": "Química Orgánica",
+        "codigo": "JXUN55",
+        "area": "Ciencias Químicas",
+        "color": "#1F5616",
+        "prerrequisito": "",
+        "creditos": 4,
+        "semestre": 3
+      },
+      {
+        "nombre": "General English III",
+        "codigo": "JXUN55",
+        "area": "Formación Segundo Idioma",
+        "color": "#D9E1F2",
+        "prerrequisito": "General English II",
+        "creditos": 2,
+        "semestre": 3
+      },
+      ...
+    ]
