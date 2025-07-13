@@ -172,7 +172,7 @@
         "codigo": "JXUN55",
         "area": "Ciencias Químicas",
         "color": "#1F5616",
-        "prerrequisito": "",
+        "prerrequisito": "Química General",
         "creditos": 4,
         "semestre": 3
       },
@@ -187,3 +187,321 @@
       },
       ...
     ]
+    },
+  {
+    "semestre": 4,
+    "asignaturas": [
+      {
+        "nombre": "Diseño y Prototipado",
+        "codigo": "JXUN55",
+        "area": "Formación Investigativa",
+        "color": "#808080",
+        "prerrequisito": "30% de Créditos Aprobados",
+        "creditos": 2,
+        "semestre": 4
+      },
+      {
+        "nombre": "Ecología Acúatica",
+        "codigo": "JXUN55",
+        "area": "Ciencias Biológicas",
+        "color": "#3C5D0F",
+        "prerrequisito": "Biología de Rec. Acuáticos",
+        "creditos": 2,
+        "semestre": 4
+      },
+      {
+        "nombre": "Electricidad y Magnetismo",
+        "codigo": "JXUN55",
+        "area": "Ciencias Físicas",
+        "color": "#FFC000",
+        "prerrequisito": "Calor y Ondas",
+        "creditos": 4,
+        "semestre": 4
+      },
+      {
+        "nombre": "Estadística Inferencial",
+        "codigo": "JXUN55",
+        "area": "Ciencias Estadísticas",
+        "color": "#29196B",
+        "prerrequisito": "Probabilidad y Estadística",
+        "creditos": 3,
+        "semestre": 4
+      },
+      {
+        "nombre": "Fisiología de Orgn. Acuáticos",
+        "codigo": "JXUN55",
+        "area": "Ciencias Biológicas",
+        "color": "#3C5D0F",
+        "prerrequisito": "Biología de Rec. Acuáticos",
+        "creditos": 3,
+        "semestre": 4
+      },
+      {
+        "nombre": "Termodinámica",
+        "codigo": "JXUN55",
+        "area": "Ciencias Físicas",
+        "color": "#FFC000",
+        "prerrequisito": "Calor y Ondas",
+        "creditos": 3,
+        "semestre": 4
+      },
+      {
+        "nombre": "General English IV",
+        "codigo": "JXUN55",
+        "area": "Formación Segundo Idioma",
+        "color": "#D9E1F2",
+        "prerrequisito": "General English III",
+        "creditos": 2,
+        "semestre": 4
+      },
+      ...
+    ]
+    },
+  {
+    "semestre": 5,
+    "asignaturas": [
+      {
+        "nombre": "Biología Pesquera",
+        "codigo": "JXUN55",
+        "area": "Ciencias Estadísticas",
+        "color": "#29196B",
+        "prerrequisito": "Estadística Inferencial",
+        "creditos": 3,
+        "semestre": 5
+      },
+      {
+        "nombre": "Bioquímica",
+        "codigo": "JXUN55",
+        "area": "Ciencias Químicas",
+        "color": "#1F5616",
+        "prerrequisito": "Química Orgánica",
+        "creditos": 4,
+        "semestre": 5
+      },
+      {
+        "nombre": "Cultivo de Moluscos",
+        "codigo": "JXUN55",
+        "area": "Acuicultura",
+        "color": "#245A8C",
+        "prerrequisito": "Fisiología de Orgn. Acuáticos",
+        "creditos": 2,
+        "semestre": 5
+      },
+      {
+        "nombre": "Embarcaciones Pesqueras",
+        "codigo": "JXUN55",
+        "area": "Pesquerías",
+        "color": "#192B4F",
+        "prerrequisito": "Estática",
+        "creditos": 3,
+        "semestre": 5
+      },
+      {
+        "nombre": "Mecánica de Fluidos",
+        "codigo": "JXUN55",
+        "area": "Ciencias Físicas",
+        "color": "#FFC000",
+        "prerrequisito": "Ecuaciones Diferenciales",
+        "creditos": 4,
+        "semestre": 5
+      },
+      {
+        "nombre": "General English V",
+        "codigo": "JXUN55",
+        "area": "Formación Segundo Idioma",
+        "color": "#D9E1F2",
+        "prerrequisito": "General English IV",
+        "creditos": 2,
+        "semestre": 5
+      },
+      ...
+    ]
+    },
+  {
+    "semestre": 6,
+    "asignaturas": [
+      {
+        "nombre": "Bromatología",
+        "codigo": "JXUN55",
+        "area": "Ciencias Químicas",
+        "color": "#1F5616",
+        "prerrequisito": "Bioquímica",
+        "creditos": 3,
+        "semestre": 6
+      },
+      {
+        "nombre": "Cátedra Global",
+        "codigo": "JXUN55",
+        "area": "Formación General",
+        "color": "#C00000",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 6
+      },
+      {
+        "nombre": "Cultivo de Crustaceos",
+        "codigo": "JXUN55",
+        "area": "Acuicultura",
+        "color": "#245A8C",
+        "prerrequisito": "Cultivo de Moluscos",
+        "creditos": 2,
+        "semestre": 6
+      },
+      {
+        "nombre": "Evaluación de Rec. Pesqueros",
+        "codigo": "JXUN55",
+        "area": "Ciencias Estadísticas",
+        "color": "#29196B",
+        "prerrequisito": "Biología Pesquera",
+        "creditos": 2,
+        "semestre": 6
+      },
+      {
+        "nombre": "Limnología",
+        "codigo": "JXUN55",
+        "area": "Ciencias Biológicas",
+        "color": "#3C5D0F",
+        "prerrequisito": "Ecología Acuática",
+        "creditos": 2,
+        "semestre": 6
+      },
+      {
+        "nombre": "Metodología de la Investigación",
+        "codigo": "JXUN55",
+        "area": "Formación Investigativa",
+        "color": "#808080",
+        "prerrequisito": "Termodinámica",
+        "creditos": 2,
+        "semestre": 6
+      },
+      {
+        "nombre": "Navegación",
+        "codigo": "JXUN55",
+        "area": "Pesquerías",
+        "color": "#192B4F",
+        "prerrequisito": "Embarcaciones Pesqueras",
+        "creditos": 2,
+        "semestre": 6
+      },
+      {
+        "nombre": "Operaciones Unitarias",
+        "codigo": "JXUN55",
+        "area": "Alimentos",
+        "color": "#FFD966",
+        "prerrequisito": "Termodinámica",
+        "creditos": 2,
+        "semestre": 6
+      },
+      ...
+    ]
+    },
+  {
+    "semestre": 6,
+    "asignaturas": [
+      {
+        "nombre": "Electiva I",
+        "codigo": "JXUN55",
+        "area": "Electivas de Profundización",
+        "color": "#1F5616",
+        "prerrequisito": "Electiva III",
+        "creditos": 2,
+        "semestre": 7
+      },
+      {
+        "nombre": "Formación Humanística y Ciudadana",
+        "codigo": "JXUN55",
+        "area": "Formación General",
+        "color": "#C00000",
+        "prerrequisito": "",
+        "creditos": 2,
+        "semestre": 7
+      },
+      {
+        "nombre": "Genética Aplic. a la Acuicultura",
+        "codigo": "JXUN55",
+        "area": "Acuicultura",
+        "color": "#245A8C",
+        "prerrequisito": "Cultivo de Moluscos",
+        "creditos": 2,
+        "semestre": 6
+      },
+      {
+        "nombre": "Hidroacústica",
+        "codigo": "JXUN55",
+        "area": "Pesquerías",
+        "color": "#192B4F",
+        "prerrequisito": "Embarcaciones Pesqueras",
+        "creditos": 2,
+        "semestre": 7
+      },
+      {
+        "nombre": "Ing. de Artes de Pesca I",
+        "codigo": "JXUN55",
+        "area": "Pesquerías",
+        "color": "#192B4F",
+        "prerrequisito": "Navegación",
+        "creditos": 2,
+        "semestre": 7
+      },
+      {
+        "nombre": "Microbiología de Alimentos",
+        "codigo": "JXUN55",
+        "area": "Alimentos",
+        "color": "#FFD966",
+        "prerrequisito": "Bromatología",
+        "creditos": 2,
+        "semestre": 7
+      },
+      {
+        "nombre": "Propuesta de Investigación en Ingeniería",
+        "codigo": "JXUN55",
+        "area": "Formación Investigativa",
+        "color": "#808080",
+        "prerrequisito": "Metodología de la Investigación",
+        "creditos": 2,
+        "semestre": 7
+      },
+      {
+        "nombre": "Tecno. de Prod. Pesqueros I",
+        "codigo": "JXUN55",
+        "area": "Alimentos",
+        "color": "#FFD966",
+        "prerrequisito": "Bromatología",
+        "creditos": 2,
+        "semestre": 7
+      },
+      ...
+    ]
+    {
+    "semestre": 10,
+    "asignaturas": [
+      {
+        "nombre": "Electiva III",
+        "codigo": "JXUN55",
+        "area": "Electivas de Profundización",
+        "color": "#1F5616",
+        "prerrequisito": "Electiva II",
+        "creditos": 2,
+        "semestre": 10
+      },
+      {
+        "nombre": "Instalaciones Acuícolas",
+        "codigo": "JXUN55",
+        "area": "Acuicultura",
+        "color": "#245A8C",
+        "prerrequisito": "Cultivo de Peces",
+        "creditos": 3,
+        "semestre": 10
+      },
+        {
+        "nombre": "Planta de Procesos Pesqueros",
+        "codigo": "JXUN55",
+        "area": "Alimentos",
+        "color": "#FFD966",
+        "prerrequisito": "Tecno. de Prod. Pesqueros II",
+        "creditos": 3,
+        "semestre": 10
+      },
+      ...
+    ]
+   
