@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Malla Curricular - Ingeniería Pesquera</title>
   <style>
     body {
@@ -39,6 +39,11 @@
       border-radius: 10px;
       color: #fff;
       position: relative;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .asignatura:hover {
+      transform: scale(1.03);
     }
     .asignatura .nombre {
       font-weight: bold;
@@ -63,10 +68,11 @@
   <div class="selector-carrera">
     <label for="carrera">Selecciona una carrera: </label>
     <select id="carrera">
+      <option value="">-- Selecciona --</option>
       <option value="pesquera">Ingeniería Pesquera</option>
     </select>
   </div>
-  <div id="contenedor-malla"></div>
+  <div id="contenedor-malla" class="oculta"></div>
 
   <script>
     const mallaPesquera = [
@@ -79,7 +85,7 @@
             creditos: 4,
             prerrequisito: "",
             color: "#3498db",
-            aprobado: true
+            aprobado: false
           },
           {
             nombre: "Matemática I",
@@ -103,19 +109,27 @@
         semestre: 2,
         asignaturas: [
           {
-            nombre: "Oceanografía",
-            area: "Ciencias del Mar",
-            creditos: 4,
-            prerrequisito: "Biología Marina",
-            color: "#9b59b6",
-            aprobado: false
-          },
-          {
             nombre: "Matemática II",
             area: "Ciencias Básicas",
             creditos: 5,
             prerrequisito: "Matemática I",
             color: "#1abc9c",
+            aprobado: false
+          },
+          {
+            nombre: "Biología Marina",
+            area: "Ciencias Biológicas",
+            creditos: 4,
+            prerrequisito: "Biología",
+            color: "#f39c12",
+            aprobado: false
+          },
+          {
+            nombre: "Oceanografía Pesquera",
+            area: "Ciencias del Mar",
+            creditos: 4,
+            prerrequisito: "",
+            color: "#9b59b6",
             aprobado: false
           }
         ]
@@ -126,22 +140,49 @@
 
     function renderMalla(malla) {
       contenedor.innerHTML = "";
+      contenedor.classList.remove("oculta");
 
-      malla.forEach(sem => {
+      const totalCreditos = 174;
+      const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
+      const creditosAprobados = malla.reduce((sum, semestre) =>
+        sum + semestre.asignaturas.reduce((acum, asig) =>
+          acum + (asig.aprobado ? asig.creditos : 0), 0), 0
+      );
+
+      malla.forEach((semestre) => {
         const semestreDiv = document.createElement("div");
         semestreDiv.className = "semestre";
 
         const titulo = document.createElement("h2");
-        titulo.textContent = `Semestre ${sem.semestre}`;
+        titulo.textContent = `Semestre ${semestre.semestre}`;
         semestreDiv.appendChild(titulo);
 
         const asignaturasDiv = document.createElement("div");
         asignaturasDiv.className = "asignaturas";
 
-        sem.asignaturas.forEach(asig => {
+        semestre.asignaturas.forEach(asig => {
+          let desbloqueada = true;
+          let tooltip = "";
+
+          if (asig.nombre === "Oceanografía Pesquera") {
+            if (creditosAprobados < creditosNecesarios) {
+              desbloqueada = false;
+              tooltip = `Se requieren ${creditosNecesarios} créditos aprobados. Actualmente tienes ${creditosAprobados}.`;
+            }
+          } else if (asig.prerrequisito) {
+            desbloqueada = malla.some(s =>
+              s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
+            );
+            if (!desbloqueada) {
+              tooltip = `Requiere: ${asig.prerrequisito}`;
+            }
+          }
+
           const card = document.createElement("div");
           card.className = "asignatura";
-          card.style.backgroundColor = asig.color;
+          card.style.backgroundColor = desbloqueada ? asig.color : "#ccc";
+          card.style.pointerEvents = desbloqueada ? "auto" : "none";
+          if (tooltip) card.title = tooltip;
 
           const nombre = document.createElement("div");
           nombre.className = "nombre";
@@ -163,6 +204,13 @@
             card.appendChild(estrella);
           }
 
+          card.addEventListener("click", () => {
+            if (desbloqueada && !asig.aprobado) {
+              asig.aprobado = true;
+              renderMalla(malla);
+            }
+          });
+
           card.appendChild(nombre);
           card.appendChild(area);
           card.appendChild(creditos);
@@ -175,7 +223,7 @@
       });
     }
 
-    document.getElementById("carrera").addEventListener("change", function() {
+    document.getElementById("carrera").addEventListener("change", function () {
       const carrera = this.value;
       if (carrera === "pesquera") {
         renderMalla(mallaPesquera);
@@ -183,8 +231,6 @@
         contenedor.innerHTML = "<p>Esta carrera aún no tiene malla disponible.</p>";
       }
     });
-
-    renderMalla(mallaPesquera);
   </script>
 </body>
 </html>
