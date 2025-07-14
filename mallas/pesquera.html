@@ -65,38 +65,106 @@
     const totalCreditos = 174;
     const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
 
-    // Ejemplo realista (puedes reemplazar nombres y créditos exactos)
-    const mallaPesquera = [
-      {
-        semestre: 1,
-        asignaturas: [
-          { nombre: "Matemática I", creditos: 5, prerrequisito: "", aprobado: false },
-          { nombre: "Biología General", creditos: 4, prerrequisito: "", aprobado: false },
-          { nombre: "Química General", creditos: 4, prerrequisito: "", aprobado: false },
-          { nombre: "Introducción a la Ingeniería Pesquera", creditos: 3, prerrequisito: "", aprobado: false }
-        ]
-      },
-      {
-        semestre: 2,
-        asignaturas: [
-          { nombre: "Matemática II", creditos: 5, prerrequisito: "Matemática I", aprobado: false },
-          { nombre: "Bioquímica", creditos: 4, prerrequisito: "Química General", aprobado: false },
-          { nombre: "Ecología Marina", creditos: 4, prerrequisito: "Biología General", aprobado: false },
-          { nombre: "Física General", creditos: 4, prerrequisito: "", aprobado: false }
-        ]
-      },
-      {
-        semestre: 3,
-        asignaturas: [
-          { nombre: "Oceanografía General", creditos: 4, prerrequisito: "Ecología Marina", aprobado: false },
-          { nombre: "Pesquerías I", creditos: 4, prerrequisito: "Introducción a la Ingeniería Pesquera", aprobado: false },
-          { nombre: "Estadística Aplicada", creditos: 4, prerrequisito: "Matemática II", aprobado: false },
-          { nombre: "Oceanografía Pesquera", creditos: 5, prerrequisito: "30%", aprobado: false } // especial
-        ]
-      }
-      // Puedes continuar hasta semestre 10...
-    ];
+    const coloresArea = {
+      formacion_general: "#2ecc71",
+      ciencias_basicas: "#e67e22",
+      formacion_profesional: "#3498db",
+      investigacion: "#9b59b6",
+      libre: "#1abc9c"
+    };
 
+    const mallaPesquera = [
+  {
+    semestre: 1,
+    asignaturas: [
+      { nombre: "Matemática I", creditos: 5, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false },
+      { nombre: "Biología General", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false },
+      { nombre: "Química General", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false },
+      { nombre: "Introducción a la Ingeniería Pesquera", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+    ]
+  },
+  {
+    semestre: 2,
+    asignaturas: [
+      { nombre: "Matemática II", creditos: 5, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "Matemática I", aprobado: false },
+      { nombre: "Bioquímica", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "Química General", aprobado: false },
+      { nombre: "Ecología Marina", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "Biología General", aprobado: false },
+      { nombre: "Física General", creditos: 4, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false }
+    ]
+  },
+  {
+    semestre: 3,
+    asignaturas: [
+      { nombre: "Oceanografía General", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Ecología Marina", aprobado: false },
+      { nombre: "Pesquerías I", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Introducción a la Ingeniería Pesquera", aprobado: false },
+      { nombre: "Estadística Aplicada", creditos: 4, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "Matemática II", aprobado: false },
+      { nombre: "Oceanografía Pesquera", creditos: 5, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "30%", aprobado: false }
+    ]
+  },
+  {
+    semestre: 4,
+    asignaturas: [
+      { nombre: "Acuacultura I", creditos: 4, tipo: "práctica", area: "Formación Profesional", prerrequisito: "Ecología Marina", aprobado: false },
+      { nombre: "Biometría", creditos: 3, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "Estadística Aplicada", aprobado: false },
+      { nombre: "Pesquerías II", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Pesquerías I", aprobado: false },
+      { nombre: "Legislación Pesquera", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+    ]
+  },
+  {
+    semestre: 5,
+    asignaturas: [
+      { nombre: "Tecnología de Productos Pesqueros", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Pesquerías II", aprobado: false },
+      { nombre: "Acuacultura II", creditos: 4, tipo: "práctica", area: "Formación Profesional", prerrequisito: "Acuacultura I", aprobado: false },
+      { nombre: "Sistemas de Información Geográfica", creditos: 3, tipo: "práctica", area: "Formación Aplicada", prerrequisito: "Oceanografía General", aprobado: false },
+      { nombre: "Electiva I", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+    ]
+  },
+  {
+    semestre: 6,
+    asignaturas: [
+      { nombre: "Procesamiento de Recursos Pesqueros", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Tecnología de Productos Pesqueros", aprobado: false },
+      { nombre: "Gestión de Recursos Naturales", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Pesquerías II", aprobado: false },
+      { nombre: "Evaluación de Poblaciones Acuáticas", creditos: 4, tipo: "teórica", area: "Investigación", prerrequisito: "Biometría", aprobado: false },
+      { nombre: "Electiva II", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva I", aprobado: false }
+    ]
+  },
+  {
+    semestre: 7,
+    asignaturas: [
+      { nombre: "Planificación Pesquera", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Gestión de Recursos Naturales", aprobado: false },
+      { nombre: "Técnicas de Muestreo Marino", creditos: 4, tipo: "práctica", area: "Investigación", prerrequisito: "Evaluación de Poblaciones Acuáticas", aprobado: false },
+      { nombre: "Electiva III", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva II", aprobado: false },
+      { nombre: "Seminario de Investigación I", creditos: 3, tipo: "teórica", area: "Investigación", prerrequisito: "", aprobado: false }
+    ]
+  },
+  {
+    semestre: 8,
+    asignaturas: [
+      { nombre: "Política y Legislación Pesquera", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Legislación Pesquera", aprobado: false },
+      { nombre: "Gestión de Calidad en Productos del Mar", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Procesamiento de Recursos Pesqueros", aprobado: false },
+      { nombre: "Seminario de Investigación II", creditos: 3, tipo: "teórica", area: "Investigación", prerrequisito: "Seminario de Investigación I", aprobado: false },
+      { nombre: "Electiva IV", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva III", aprobado: false }
+    ]
+  },
+  {
+    semestre: 9,
+    asignaturas: [
+      { nombre: "Formulación y Evaluación de Proyectos Pesqueros", creditos: 4, tipo: "teórico/práctica", area: "Formación Profesional", prerrequisito: "Planificación Pesquera", aprobado: false },
+      { nombre: "Práctica Profesional I", creditos: 6, tipo: "práctica", area: "Formación Aplicada", prerrequisito: "60%", aprobado: false },
+      { nombre: "Electiva V", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva IV", aprobado: false },
+      { nombre: "Emprendimiento y Gestión Empresarial", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+    ]
+  },
+  {
+    semestre: 10,
+    asignaturas: [
+      { nombre: "Trabajo de Grado", creditos: 8, tipo: "teórico/práctica", area: "Investigación", prerrequisito: "Seminario de Investigación II", aprobado: false },
+      { nombre: "Práctica Profesional II", creditos: 6, tipo: "práctica", area: "Formación Aplicada", prerrequisito: "Práctica Profesional I", aprobado: false },
+      { nombre: "Electiva VI", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva V", aprobado: false }
+    ]
+  }
+];
+    
     const contenedor = document.getElementById("contenedor-malla");
 
     function calcularCreditosAprobados() {
@@ -144,13 +212,16 @@
 
           const card = document.createElement("div");
           card.className = "asignatura";
-          card.style.backgroundColor = desbloqueada ? "#3498db" : "#ccc";
+          card.style.backgroundColor = desbloqueada
+            ? coloresArea[asig.area] || "#999"
+            : "#ccc";
           card.style.pointerEvents = desbloqueada ? "auto" : "none";
           if (tooltip) card.title = tooltip;
 
           card.innerHTML = `
             <div class="nombre">${asig.nombre}</div>
             <div>Créditos: ${asig.creditos}</div>
+            <div>Tipo: ${asig.tipo}</div>
             ${asig.prerrequisito && asig.prerrequisito !== "30%" ? `<div>Prerrequisito: ${asig.prerrequisito}</div>` : ""}
           `;
 
