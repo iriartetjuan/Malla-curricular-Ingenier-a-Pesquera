@@ -34,7 +34,7 @@
       gap: 1rem;
     }
     .asignatura {
-      flex: 1 1 calc(33% - 1rem);
+      flex: 1 1 calc(25% - 1rem);
       padding: 1rem;
       border-radius: 10px;
       color: #fff;
@@ -75,108 +75,29 @@
   <div id="contenedor-malla" class="oculta"></div>
 
   <script>
-    const mallaPesquera = [
-      {
-        semestre: 1,
-        asignaturas: [
-          {
-            nombre: "Biología",
-            tipo: "Teórico/Práctico"
-            area: "Ciencias Biológicas",
-            creditos: 4,
-            prerrequisito: "",
-            color: "#3C5D0F",
+    const totalCreditos = 174;
+    const creditosNecesarios = Math.floor(totalCreditos * 0.3);
+
+    const generarSemestres = () => {
+      const semestres = [];
+      for (let i = 1; i <= 10; i++) {
+        const asignaturas = [];
+        for (let j = 1; j <= 8; j++) {
+          asignaturas.push({
+            nombre: `Asignatura ${j}S${i}`,
+            area: `Área ${j}`,
+            creditos: 3 + (j % 3),
+            prerrequisito: i === 1 ? "" : `Asignatura ${j}S${i - 1}`,
+            color: `hsl(${(i * 36 + j * 10) % 360}, 70%, 60%)`,
             aprobado: false
-          },
-          {
-            nombre: "Cálculo Diferencial",
-            tipo: "Teórico/Práctico"
-            area: "Ciencias Matemáticas",
-            creditos: 4,
-            prerrequisito: "",
-            color: "#740063",
-            aprobado: false
-          },
-          {
-            nombre: "Dibujo para Ingeniería",
-            tipo: "Teórico",
-            area: "Formación General",
-            creditos: 2,
-            prerrequisito: "",
-            color: "#C00000",
-            aprobado: false
-          },
-          {
-            nombre: "Introducción a la Ingeniería Pesquera",
-            tipo: "Teórico",
-            area: "Formación Complementaria",
-            creditos: 2,
-            prerrequisito: "",
-            color: "#F96F07",
-            aprobado: false
-          },
-          {
-            nombre: "Procesos Lectores y Escriturales",
-            tipo: "Teórico",
-            area: "Formación General",
-            creditos: 2,
-            prerrequisito: "",
-            color: "#C00000",
-            aprobado: false
-          },
-          {
-            nombre: "Razonamiento y Representación Matemática",
-            tipo: "Teórico",
-            area: "Formación General",
-            creditos: 2,
-            prerrequisito: "",
-            color: "#C00000",
-            aprobado: false
-          },
-          {
-            nombre: "General English I",
-            tipo: "Teórico",
-            area: "Formación Segundo Idioma",
-            creditos: 2,
-            prerrequisito: "",
-            color: "#D9E1F2",
-            aprobado: false
-          }
-        ]
-      },
-      {
-        semestre: 2,
-        asignaturas: [
-          {
-            nombre: "Biología de Rec. Acuáticos",
-            tipo: "Teórico/Práctico"
-            area: "Ciencias Biológicas",
-            creditos: 4,
-            prerrequisito: "Biología",
-            color: "#3C5D0F",
-            aprobado: false
-          },
-          {
-            nombre: "Cálculo Integral",
-            tipo: "Teórico/Práctico"
-            area: "Ciencias Matemáticas",
-            creditos: 4,
-            prerrequisito: "Cálculo Diferencial",
-            color: "#740063",
-            aprobado: false
-          },
-          {
-            nombre: "Expresión Oral y Argumentación",
-            tipo: "Teórico",
-            area: "Formación General",
-            creditos: 2,
-            prerrequisito: "Procesos Lectores y Escriturales",
-            color: "#C00000",
-            aprobado: false
-          }
-        ]
+          });
+        }
+        semestres.push({ semestre: i, asignaturas });
       }
-    ];
+      return semestres;
+    };
+
+    const mallaPesquera = generarSemestres();
 
     const contenedor = document.getElementById("contenedor-malla");
 
@@ -184,14 +105,20 @@
       contenedor.innerHTML = "";
       contenedor.classList.remove("oculta");
 
-      const totalCreditos = 174;
-      const creditosNecesarios = Math.floor(totalCreditos * 0.1); // 10%
       const creditosAprobados = malla.reduce((sum, semestre) =>
         sum + semestre.asignaturas.reduce((acum, asig) =>
           acum + (asig.aprobado ? asig.creditos : 0), 0), 0
       );
 
-      malla.forEach((semestre) => {
+      let mostrarHastaSemestre = 1;
+      for (let i = 0; i < malla.length - 1; i++) {
+        const desbloqueaSiguiente = malla[i].asignaturas.some(asig => asig.aprobado);
+        if (desbloqueaSiguiente) mostrarHastaSemestre = i + 2;
+      }
+
+      malla.forEach((semestre, idx) => {
+        if (idx + 1 > mostrarHastaSemestre) return;
+
         const semestreDiv = document.createElement("div");
         semestreDiv.className = "semestre";
 
@@ -206,7 +133,7 @@
           let desbloqueada = true;
           let tooltip = "";
 
-          if (asig.nombre === "Expresión Oral y Argumentación") {
+          if (asig.nombre === "Oceanografía Pesquera") {
             if (creditosAprobados < creditosNecesarios) {
               desbloqueada = false;
               tooltip = `Se requieren ${creditosNecesarios} créditos aprobados. Actualmente tienes ${creditosAprobados}.`;
@@ -215,9 +142,7 @@
             desbloqueada = malla.some(s =>
               s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
             );
-            if (!desbloqueada) {
-              tooltip = `Requiere: ${asig.prerrequisito}`;
-            }
+            if (!desbloqueada) tooltip = `Requiere: ${asig.prerrequisito}`;
           }
 
           const card = document.createElement("div");
@@ -276,3 +201,4 @@
   </script>
 </body>
 </html>
+
