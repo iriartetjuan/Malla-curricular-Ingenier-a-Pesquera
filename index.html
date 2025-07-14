@@ -148,27 +148,30 @@
         semestre: 2,
         asignaturas: [
           {
-            nombre: "Matemática II",
-            area: "Ciencias Básicas",
-            creditos: 5,
-            prerrequisito: "Cálculo Diferencial",
-            color: "#1abc9c",
-            aprobado: false
-          },
-          {
-            nombre: "Biología Marina",
+            nombre: "Biología de Rec. Acuáticos",
+            tipo: "Teórico/Práctico"
             area: "Ciencias Biológicas",
             creditos: 4,
             prerrequisito: "Biología",
-            color: "#f39c12",
+            color: "#3C5D0F",
             aprobado: false
           },
           {
-            nombre: "Oceanografía Pesquera",
-            area: "Ciencias del Mar",
+            nombre: "Cálculo Integral",
+            tipo: "Teórico/Práctico"
+            area: "Ciencias Matemáticas",
             creditos: 4,
-            prerrequisito: "",
-            color: "#9b59b6",
+            prerrequisito: "Cálculo Diferencial",
+            color: "#740063",
+            aprobado: false
+          },
+          {
+            nombre: "Expresión Oral y Argumentación",
+            tipo: "Teórico",
+            area: "Formación General",
+            creditos: 2,
+            prerrequisito: "Procesos Lectores y Escriturales",
+            color: "#C00000",
             aprobado: false
           }
         ]
@@ -182,7 +185,7 @@
       contenedor.classList.remove("oculta");
 
       const totalCreditos = 174;
-      const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
+      const creditosNecesarios = Math.floor(totalCreditos * 0.1); // 10%
       const creditosAprobados = malla.reduce((sum, semestre) =>
         sum + semestre.asignaturas.reduce((acum, asig) =>
           acum + (asig.aprobado ? asig.creditos : 0), 0), 0
@@ -203,7 +206,7 @@
           let desbloqueada = true;
           let tooltip = "";
 
-          if (asig.nombre === "Oceanografía Pesquera") {
+          if (asig.nombre === "Expresión Oral y Argumentación") {
             if (creditosAprobados < creditosNecesarios) {
               desbloqueada = false;
               tooltip = `Se requieren ${creditosNecesarios} créditos aprobados. Actualmente tienes ${creditosAprobados}.`;
