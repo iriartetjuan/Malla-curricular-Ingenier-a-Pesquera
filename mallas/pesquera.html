@@ -248,17 +248,20 @@
           const card = document.createElement("div");
           card.className = "asignatura";
           card.style.backgroundColor = desbloqueada
-            ? coloresArea[asig.area] || "#999"
+            ? coloresArea[asig.area] || "#aaa"
             : "#ccc";
           card.style.pointerEvents = desbloqueada ? "auto" : "none";
           if (tooltip) card.title = tooltip;
 
           card.innerHTML = `
-            <div class="nombre">${asig.nombre}</div>
-            <div>Créditos: ${asig.creditos}</div>
-            <div>Tipo: ${asig.tipo}</div>
-            ${asig.prerrequisito && asig.prerrequisito !== "30%" ? `<div>Prerrequisito: ${asig.prerrequisito}</div>` : ""}
+          <div class="nombre">${asig.nombre}</div> 
+          <div class="tooltip">${tooltip}</div>
           `;
+          card.onclick = () => {
+            asig.aprobado = !asig.aprobado;
+            renderMalla();
+          };
+
 
           if (asig.aprobado) {
             const estrella = document.createElement("div");
