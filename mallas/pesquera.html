@@ -254,12 +254,15 @@ const coloresArea = {
           card.style.pointerEvents = desbloqueada ? "auto" : "none";
           if (tooltip) card.title = tooltip;
 
-          card.innerHTML = 
-            <div class="nombre">${asig.nombre}</div>
-            <div>Créditos: ${asig.creditos}</div>
-            <div>Tipo: ${asig.tipo}</div>
-            ${asig.prerrequisito && asig.prerrequisito !== "30%" ? <div>Prerrequisito: ${asig.prerrequisito}</div> : ""}
-          ;
+          card.innerHTML = `
+          <div class="nombre">${asig.nombre}</div>
+          <div>Créditos: ${asig.creditos}</div>
+          <div>Tipo: ${asig.tipo}</div>
+          ${asig.prerrequisito && asig.prerrequisito !== "30%" 
+            ? `<div>Prerrequisito: ${asig.prerrequisito}</div>` 
+            : ""}
+            `;
+
 
           if (asig.aprobado) {
             const estrella = document.createElement("div");
