@@ -250,32 +250,18 @@
           card.style.backgroundColor = desbloqueada
             ? coloresArea[asig.area] || "#aaa"
             : "#ccc";
-          card.style.pointerEvents = desbloqueada ? "auto" : "none";
-          if (tooltip) card.title = tooltip;
-
+          
           card.innerHTML = `
-          <div class="nombre">${asig.nombre}</div> 
-          <div class="tooltip">${tooltip}</div>
+            <div class="nombre">${asig.nombre}</div>
+            <div class="tooltip">${tooltip}</div>
           `;
-          card.onclick = () => {
-            asig.aprobado = !asig.aprobado;
-            renderMalla();
-          };
 
-
-          if (asig.aprobado) {
-            const estrella = document.createElement("div");
-            estrella.className = "estrellita";
-            estrella.textContent = "⭐";
-            card.appendChild(estrella);
-          }
-
-          card.addEventListener("click", () => {
-            if (!asig.aprobado && desbloqueada) {
-              asig.aprobado = true;
+          if (desbloqueada) {
+            card.onclick = () => {
+              asig.aprobado = !asig.aprobado;
               renderMalla();
-            }
-          });
+            };
+          }
 
           divAsignaturas.appendChild(card);
         });
