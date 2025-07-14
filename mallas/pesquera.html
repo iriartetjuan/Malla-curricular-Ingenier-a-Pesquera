@@ -65,21 +65,22 @@
     const totalCreditos = 174;
     const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
 
-    const coloresArea = {
-      formación_general: "#c00000",
-      formación_complementaria: "#f96f07",
-      formación_segundo_idioma: "#d9e1f2",
-      formación_investigativa: "#808080",
-      ciencias_matemáticas: "#740063"
-      ciencias_físicas: "#ffc000",
-      ciencias_químicas: "#1f5616",
-      ciencias_biológicas: "#3c5d0F",
-      ciencias_estadísticas: "#29196b",
-      alimentos: "#ffd966"
-      pesquerías: "#192b4f",
-      acuicultura: "#245a8c",
-      electivas_de_profundización: "#a50021",
-    };
+const coloresArea = {
+  formación_general: "#c00000",
+  formación_complementaria: "#f96f07",
+  formación_segundo_idioma: "#d9e1f2",
+  formación_investigativa: "#808080",
+  ciencias_matemáticas: "#740063",
+  ciencias_físicas: "#ffc000",
+  ciencias_químicas: "#1f5616",
+  ciencias_biológicas: "#3c5d0F",
+  ciencias_estadísticas: "#29196b",
+  alimentos: "#ffd966",
+  pesquerías: "#192b4f",
+  acuicultura: "#245a8c",
+  electivas_de_profundización: "#a50021"
+};
+
 
     const mallaPesquera = [
   {
@@ -109,7 +110,7 @@
     semestre: 3,
     asignaturas: [
       { nombre: "Calor y Ondas", creditos: 4, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Física Mecánica", aprobado: false },
-      { nombre: "Biología de Rec. Acuáticos", creditos: 3, tipo: "teórica/práctica", area: "ciencias_biológicas", prerrequisito: "Biología", aprobado: false },
+      { nombre: "Ecuaciones Diferenciales", creditos: 4, tipo: "teórica", area: "ciencias_matemáticas", prerrequisito: "Cálculo Diferencial", aprobado: false },
       { nombre: "Estática", creditos: 3, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Física Mecánica", aprobado: false },
       { nombre: "Probabilidad y Estadística", creditos: 3, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Cálculo Integral", aprobado: false },
       { nombre: "Química Orgánica", creditos: 4, tipo: "teórica/práctica", area: "ciencias_químicas", prerrequisito: "Química General", aprobado: false },
