@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mallas Curriculares Facultad de Ingeniería de la Universidad del Magdalena</title>
+  <title>Mallas Curriculares - Facultad de Ingeniería - Universidad del Magdalena</title>
   <style>
     body {
       font-family: sans-serif;
@@ -46,13 +46,13 @@
     <select id="carrera">
       <option value="">-- Selecciona --</option>
       <option value="pesquera">Ingeniería Pesquera</option>
-      <option value="agro">Ingeniería Agronómica</option>
-      <option value="sistemas">Ingeniería de Sistemasl</option>
-      <option value="ambiental">Ingeniería Ambienta y Sanitarial</option>
+      <option value="agronomica">Ingeniería Agronómica</option>
+      <option value="sistemas">Ingeniería de Sistemas</option>
+      <option value="ambiental">Ingeniería Ambiental y Sanitaria</option>
       <option value="civil">Ingeniería Civil</option>
-      <option value="electro">Ingeniería Electrónica</option>
+      <option value="electronica">Ingeniería Electrónica</option>
       <option value="industrial">Ingeniería Industrial</option>
-      <option value="marino">Ingeniería Marino-Costera</option>
+      <option value="marino-costera">Ingeniería Marino-Costera</option>
     </select>
   </div>
 
@@ -61,12 +61,12 @@
   </div>
 
   <script>
-  document.getElementById("carrera").addEventListener("change", function () {
-    const carrera = this.value;
-    if (carrera) {
-      window.location.href = `mallas/${carrera}.html`;
-    }
-  });
-</script>
+    document.getElementById("carrera").addEventListener("change", function () {
+      const carrera = this.value;
+      if (carrera) {
+        window.location.href = `mallas/${carrera}.html`;
+      }
+    });
+  </script>
 </body>
 </html>
