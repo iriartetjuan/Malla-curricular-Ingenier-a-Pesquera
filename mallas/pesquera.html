@@ -230,60 +230,45 @@ const coloresArea = {
         const divAsignaturas = document.createElement("div");
         divAsignaturas.className = "asignaturas";
 
-        semestre.asignaturas.forEach(asig => {
-          let desbloqueada = true;
-          let tooltip = "";
+      semestre.asignaturas.forEach(asig => {
+  let desbloqueada = true;
+  let tooltip = "";
 
-          if (asig.prerrequisito === "30%") {
-            desbloqueada = creditosAprobados >= creditosNecesarios;
-            tooltip = `Requiere 30% de créditos: ${creditosNecesarios} (tienes ${creditosAprobados})`;
-          } else if (asig.prerrequisito) {
-            desbloqueada = mallaPesquera.some(s =>
-              s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
-            );
-            if (!desbloqueada) {
-              tooltip = `Requiere: ${asig.prerrequisito}`;
-            }
-          }
+  if (asig.prerrequisito === "30%") {
+    desbloqueada = creditosAprobados >= creditosNecesarios;
+    tooltip = `Requiere 30% de créditos: ${creditosNecesarios} (tienes ${creditosAprobados})`;
+  } else if (asig.prerrequisito && !asig.prerrequisito.includes("%")) {
+    desbloqueada = mallaPesquera.some(s =>
+      s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
+    );
+    if (!desbloqueada) {
+      tooltip = `Requiere: ${asig.prerrequisito}`;
+    }
+  }
 
-          const card = document.createElement("div");
-          card.className = "asignatura";
-          card.style.backgroundColor = desbloqueada
-            ? coloresArea[asig.area] || "#999"
-            : "#ccc";
-          card.style.pointerEvents = desbloqueada ? "auto" : "none";
-          if (tooltip) card.title = tooltip;
+  const card = document.createElement("div");
+  card.className = "asignatura";
+  card.style.backgroundColor = desbloqueada
+    ? coloresArea[asig.area] || "#999"
+    : "#e0e0e0";
 
-          card.innerHTML = `
-          <div class="nombre">${asig.nombre}</div>
-          <div>Créditos: ${asig.creditos}</div>
-          <div>Tipo: ${asig.tipo}</div>
-          ${asig.prerrequisito && asig.prerrequisito !== "30%" 
-            ? `<div>Prerrequisito: ${asig.prerrequisito}</div>` 
-            : ""}
-            `;
+  card.title = !desbloqueada ? tooltip : "";
 
+  const nombreHTML = `<div class="nombre">${asig.nombre}</div>`;
+  const estrellaHTML = asig.aprobado ? `<div class="estrellita">⭐</div>` : "";
 
-          if (asig.aprobado) {
-            const estrella = document.createElement("div");
-            estrella.className = "estrellita";
-            estrella.textContent = "⭐";
-            card.appendChild(estrella);
-          }
+  card.innerHTML = `${nombreHTML}${estrellaHTML}`;
 
-          card.addEventListener("click", () => {
-            if (!asig.aprobado && desbloqueada) {
-              asig.aprobado = true;
-              renderMalla();
-            }
-          });
+  card.addEventListener("click", () => {
+    if (!desbloqueada) return;
 
-          divAsignaturas.appendChild(card);
-        });
+    asig.aprobado = !asig.aprobado;
+    renderMalla();
+  });
 
-        divSemestre.appendChild(divAsignaturas);
-        contenedor.appendChild(divSemestre);
-      });
+  divAsignaturas.appendChild(card);
+});
+
     }
 
     renderMalla();
