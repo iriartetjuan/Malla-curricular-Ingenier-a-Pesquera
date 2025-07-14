@@ -3,202 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Malla Curricular - Ingeniería Pesquera</title>
+  <title>Mallas Curriculares - Facultad de Ingeniería</title>
   <style>
     body {
       font-family: sans-serif;
-      background: #f2f2f2;
+      background: #e6f2f8;
       margin: 0;
-      padding: 1rem;
+      padding: 2rem;
+      text-align: center;
     }
+
     h1 {
-      text-align: center;
+      font-size: 2rem;
+      color: #003366;
     }
+
     .selector-carrera {
-      margin: 1rem auto;
-      text-align: center;
+      margin-top: 2rem;
     }
-    .semestre {
-      margin-bottom: 2rem;
-      padding: 1rem;
-      border-radius: 10px;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .semestre h2 {
-      border-bottom: 1px solid #ccc;
-    }
-    .asignaturas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .asignatura {
-      flex: 1 1 calc(25% - 1rem);
-      padding: 1rem;
-      border-radius: 10px;
-      color: #fff;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .asignatura:hover {
-      transform: scale(1.03);
-    }
-    .asignatura .nombre {
-      font-weight: bold;
-    }
-    .asignatura .estrellita {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      font-size: 1.5rem;
-    }
+
     select {
-      font-size: 1rem;
-      padding: 0.5rem;
+      font-size: 1.2rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
     }
-    .oculta {
-      display: none;
+
+    .info {
+      margin-top: 3rem;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular de la Facultad</h1>
+  <h1>Mallas Curriculares de la Facultad de Ingeniería</h1>
+
   <div class="selector-carrera">
-    <label for="carrera">Selecciona una carrera: </label>
+    <label for="carrera"><strong>Selecciona una carrera:</strong></label>
+    <br/><br/>
     <select id="carrera">
       <option value="">-- Selecciona --</option>
       <option value="pesquera">Ingeniería Pesquera</option>
+      <option value="civil">Ingeniería Civil</option>
+      <option value="industrial">Ingeniería Industrial</option>
+      <option value="ambiental">Ingeniería Ambiental</option>
+      <option value="alimentos">Ingeniería en Alimentos</option>
+      <option value="ciencias-marinas">Ciencias del Mar</option>
+      <option value="computacion">Ingeniería en Computación</option>
+      <option value="matematica">Licenciatura en Matemáticas</option>
     </select>
   </div>
-  <div id="contenedor-malla" class="oculta"></div>
+
+  <div class="info">
+    <p>Una vez seleccionada la carrera, serás redirigido a la malla curricular correspondiente.</p>
+    <p>Asegúrate de tener los archivos dentro de la carpeta <code>/mallas/</code> con el nombre correcto.</p>
+  </div>
 
   <script>
-    const totalCreditos = 174;
-    const creditosNecesarios = Math.floor(totalCreditos * 0.3);
-
-    const generarSemestres = () => {
-      const semestres = [];
-      for (let i = 1; i <= 10; i++) {
-        const asignaturas = [];
-        for (let j = 1; j <= 8; j++) {
-          asignaturas.push({
-            nombre: `Asignatura ${j}S${i}`,
-            area: `Área ${j}`,
-            creditos: 3 + (j % 3),
-            prerrequisito: i === 1 ? "" : `Asignatura ${j}S${i - 1}`,
-            color: `hsl(${(i * 36 + j * 10) % 360}, 70%, 60%)`,
-            aprobado: false
-          });
-        }
-        semestres.push({ semestre: i, asignaturas });
-      }
-      return semestres;
-    };
-
-    const mallaPesquera = generarSemestres();
-
-    const contenedor = document.getElementById("contenedor-malla");
-
-    function renderMalla(malla) {
-      contenedor.innerHTML = "";
-      contenedor.classList.remove("oculta");
-
-      const creditosAprobados = malla.reduce((sum, semestre) =>
-        sum + semestre.asignaturas.reduce((acum, asig) =>
-          acum + (asig.aprobado ? asig.creditos : 0), 0), 0
-      );
-
-      let mostrarHastaSemestre = 1;
-      for (let i = 0; i < malla.length - 1; i++) {
-        const desbloqueaSiguiente = malla[i].asignaturas.some(asig => asig.aprobado);
-        if (desbloqueaSiguiente) mostrarHastaSemestre = i + 2;
-      }
-
-      malla.forEach((semestre, idx) => {
-        if (idx + 1 > mostrarHastaSemestre) return;
-
-        const semestreDiv = document.createElement("div");
-        semestreDiv.className = "semestre";
-
-        const titulo = document.createElement("h2");
-        titulo.textContent = `Semestre ${semestre.semestre}`;
-        semestreDiv.appendChild(titulo);
-
-        const asignaturasDiv = document.createElement("div");
-        asignaturasDiv.className = "asignaturas";
-
-        semestre.asignaturas.forEach(asig => {
-          let desbloqueada = true;
-          let tooltip = "";
-
-          if (asig.nombre === "Oceanografía Pesquera") {
-            if (creditosAprobados < creditosNecesarios) {
-              desbloqueada = false;
-              tooltip = `Se requieren ${creditosNecesarios} créditos aprobados. Actualmente tienes ${creditosAprobados}.`;
-            }
-          } else if (asig.prerrequisito) {
-            desbloqueada = malla.some(s =>
-              s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
-            );
-            if (!desbloqueada) tooltip = `Requiere: ${asig.prerrequisito}`;
-          }
-
-          const card = document.createElement("div");
-          card.className = "asignatura";
-          card.style.backgroundColor = desbloqueada ? asig.color : "#ccc";
-          card.style.pointerEvents = desbloqueada ? "auto" : "none";
-          if (tooltip) card.title = tooltip;
-
-          const nombre = document.createElement("div");
-          nombre.className = "nombre";
-          nombre.textContent = asig.nombre;
-
-          const area = document.createElement("div");
-          area.textContent = asig.area;
-
-          const creditos = document.createElement("div");
-          creditos.textContent = `Créditos: ${asig.creditos}`;
-
-          const prer = document.createElement("div");
-          prer.textContent = asig.prerrequisito ? `Prerrequisito: ${asig.prerrequisito}` : "";
-
-          if (asig.aprobado) {
-            const estrella = document.createElement("div");
-            estrella.className = "estrellita";
-            estrella.textContent = "⭐";
-            card.appendChild(estrella);
-          }
-
-          card.addEventListener("click", () => {
-            if (desbloqueada && !asig.aprobado) {
-              asig.aprobado = true;
-              renderMalla(malla);
-            }
-          });
-
-          card.appendChild(nombre);
-          card.appendChild(area);
-          card.appendChild(creditos);
-          card.appendChild(prer);
-          asignaturasDiv.appendChild(card);
-        });
-
-        semestreDiv.appendChild(asignaturasDiv);
-        contenedor.appendChild(semestreDiv);
-      });
-    }
-
     document.getElementById("carrera").addEventListener("change", function () {
       const carrera = this.value;
-      if (carrera === "pesquera") {
-        renderMalla(mallaPesquera);
-      } else {
-        contenedor.innerHTML = "<p>Esta carrera aún no tiene malla disponible.</p>";
+      if (carrera) {
+        // Redirige a la malla correspondiente
+        window.location.href = `mallas/${carrera}.html`;
       }
     });
   </script>
 </body>
 </html>
-
