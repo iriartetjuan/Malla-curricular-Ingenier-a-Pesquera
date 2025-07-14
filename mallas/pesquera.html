@@ -66,19 +66,19 @@
     const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
 
     const coloresArea = {
-      formación_general: "#C00000",
-      formación_complementaria: "#F96F07",
-      formación_segundo_idioma: "#D9E1F2",
+      formación_general: "#c00000",
+      formación_complementaria: "#f96f07",
+      formación_segundo_idioma: "#d9e1f2",
       formación_investigativa: "#808080",
       ciencias_matemáticas: "#740063"
-      ciencias_físicas: "#FFC000",
-      ciencias_químicas: "#1F5616",
-      ciencias_biológicas: "#3C5D0F",
-      ciencias_estadísticas: "#29196B",
-      alimentos: "#FFD966"
-      pesquerías: "#192B4F",
-      acuicultura: "#245A8C",
-      electivas_de_profundización: "#A50021",
+      ciencias_físicas: "#ffc000",
+      ciencias_químicas: "#1f5616",
+      ciencias_biológicas: "#3c5d0F",
+      ciencias_estadísticas: "#29196b",
+      alimentos: "#ffd966"
+      pesquerías: "#192b4f",
+      acuicultura: "#245a8c",
+      electivas_de_profundización: "#a50021",
     };
 
     const mallaPesquera = [
@@ -136,7 +136,7 @@
       { nombre: "Cultivo de Moluscos", creditos: 2, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Fisiología de Orgn. Acuáticos", aprobado: false },
       { nombre: "Embarcaciones Pesqueras", creditos: 3, tipo: "teórica", area: "pesquerías", prerrequisito: "Estática", aprobado: false },
       { nombre: "Mecánica de Fluidos", creditos: 4, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Ecuaciones Difernciales", aprobado: false },
-      { nombre: "General English V", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "General English IV", aprobado: 
+      { nombre: "General English V", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "General English IV", aprobado: false }
     ]
   },
   {
@@ -149,7 +149,7 @@
       { nombre: "Limnología", creditos: 2, tipo: "teórica", area: "ciencias_biológicas", prerrequisito: "Ecología Acuática", aprobado: false },
       { nombre: "Metodología de la Investigación", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "Diseño y Prototipado", aprobado: false },
       { nombre: "Navegación", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Embarcaciones Pesqueras", aprobado: false },
-      { nombre: "Operaciones Unitarias", creditos: 2, tipo: "teórica", area: "alimentos", prerrequisito: "Termodinámica", aprobado: false },
+      { nombre: "Operaciones Unitarias", creditos: 2, tipo: "teórica", area: "alimentos", prerrequisito: "Termodinámica", aprobado: false }
     ]
   },
   {
@@ -162,7 +162,7 @@
       { nombre: "Ing. de Artes de Pesca I", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Embarcaciones Pesqueras", aprobado: false },
       { nombre: "Microbiología de Alimentos", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Bromatología", aprobado: false },
       { nombre: "Propuesta de Investigación", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "Metodología de la Investigación", aprobado: false },
-      { nombre: "Tecno. de Prod. Pesqueros I", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Bromatología", aprobado: false },
+      { nombre: "Tecno. de Prod. Pesqueros I", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Bromatología", aprobado: false }
     ]
   },
   {
@@ -175,7 +175,7 @@
       { nombre: "Ing. de Artes de Pesca II", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Ing. de Artes de Pesca I", aprobado: false },
       { nombre: "Nutrición de Orgn. Acuáticos", creditos: 2, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Microbiología de Alimentos", aprobado: false },
       { nombre: "Proyecto Culminante de Diseño", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "Propuesta de Investigación", aprobado: false },
-      { nombre: "Tecno. de Prod. Pesqueros II", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Tecno. de Prod. Pesqueros I", aprobado: false },
+      { nombre: "Tecno. de Prod. Pesqueros II", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Tecno. de Prod. Pesqueros I", aprobado: false }
     ]
   },
   {
@@ -187,7 +187,7 @@
       { nombre: "Modelado y Simulación de Ecosistemas", creditos: 3, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Evaluación de Rec. Pesqueros", aprobado: false },
       { nombre: "Maquinaria Pesquera", creditos: 3, tipo: "teórica", area: "pesquerías", prerrequisito: "Ing. de Artes de Pesca I", aprobado: false },
       { nombre: "Oceanografía Pesquera", creditos: 3, tipo: "teórica", area: "pesquerías", prerrequisito: "Ing. de Artes de Pesca I", aprobado: false },
-      { nombre: "Patología de Orgn. Acuáticos", creditos: 3, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Nutrición de Orgn. Acuáticos", aprobado: false },
+      { nombre: "Patología de Orgn. Acuáticos", creditos: 3, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Nutrición de Orgn. Acuáticos", aprobado: false }
     ]
   },
   {
@@ -224,7 +224,7 @@
 
         const divSemestre = document.createElement("div");
         divSemestre.className = "semestre";
-        divSemestre.innerHTML = <h2>Semestre ${semestre.semestre}</h2>;
+        divSemestre.innerHTML = `<h2>Semestre ${semestre.semestre}</h2>`;
 
         const divAsignaturas = document.createElement("div");
         divAsignaturas.className = "asignaturas";
@@ -235,13 +235,13 @@
 
           if (asig.prerrequisito === "30%") {
             desbloqueada = creditosAprobados >= creditosNecesarios;
-            tooltip = Requiere 30% de créditos: ${creditosNecesarios} (tienes ${creditosAprobados});
+            tooltip = `Requiere 30% de créditos: ${creditosNecesarios} (tienes ${creditosAprobados})`;
           } else if (asig.prerrequisito) {
             desbloqueada = mallaPesquera.some(s =>
               s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
             );
             if (!desbloqueada) {
-              tooltip = Requiere: ${asig.prerrequisito};
+              tooltip = `Requiere: ${asig.prerrequisito}`;
             }
           }
 
