@@ -86,7 +86,7 @@
     semestre: 1,
     asignaturas: [
       { nombre: "Biología", creditos: 4, tipo: "teórica/práctica", area: "ciencias_biológicas", prerrequisito: "", aprobado: false },
-      { nombre: "Cálculo Integral", creditos: 4, tipo: "teórica", area: "ciencias_matemáticas", prerrequisito: "", aprobado: false },
+      { nombre: "Cálculo Diferencial", creditos: 4, tipo: "teórica", area: "ciencias_matemáticas", prerrequisito: "", aprobado: false },
       { nombre: "Dibujo para Ingeniería", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
       { nombre: "Introducción a la Ingeniería Pesquera", creditos: 2, tipo: "teórica", area: "formación_complementaria", prerrequisito: "", aprobado: false }
       { nombre: "Procesos Lectores y Escriturales", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
@@ -97,81 +97,105 @@
   {
     semestre: 2,
     asignaturas: [
-      { nombre: "Matemática II", creditos: 5, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "Matemática I", aprobado: false },
-      { nombre: "Bioquímica", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "Química General", aprobado: false },
-      { nombre: "Ecología Marina", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "Biología General", aprobado: false },
-      { nombre: "Física General", creditos: 4, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false }
+      { nombre: "Biología de Rec. Acuáticos", creditos: 3, tipo: "teórica/práctica", area: "ciencias_biológicas", prerrequisito: "Biología", aprobado: false },
+      { nombre: "Cálculo Integral", creditos: 4, tipo: "teórica", area: "ciencias_matemáticas", prerrequisito: "Cálculo Diferencial", aprobado: false },
+      { nombre: "Expresión Oral y Argumentación", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "Procesos Lectores y Escriturales", aprobado: false },
+      { nombre: "Física Mecánica", creditos: 4, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Cálculo Diferencial", aprobado: false },
+      { nombre: "Química General", creditos: 4, tipo: "teórica/práctica", area: "ciencias_químicas", prerrequisito: "", aprobado: false }
+      { nombre: "General English II", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "General English I", aprobado: false }
     ]
   },
   {
     semestre: 3,
     asignaturas: [
-      { nombre: "Oceanografía General", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Ecología Marina", aprobado: false },
-      { nombre: "Pesquerías I", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Introducción a la Ingeniería Pesquera", aprobado: false },
-      { nombre: "Estadística Aplicada", creditos: 4, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "Matemática II", aprobado: false },
-      { nombre: "Oceanografía Pesquera", creditos: 5, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "30%", aprobado: false }
+      { nombre: "Calor y Ondas", creditos: 4, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Física Mecánica", aprobado: false },
+      { nombre: "Biología de Rec. Acuáticos", creditos: 3, tipo: "teórica/práctica", area: "ciencias_biológicas", prerrequisito: "Biología", aprobado: false },
+      { nombre: "Estática", creditos: 3, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Física Mecánica", aprobado: false },
+      { nombre: "Probabilidad y Estadística", creditos: 3, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Cálculo Integral", aprobado: false },
+      { nombre: "Química Orgánica", creditos: 4, tipo: "teórica/práctica", area: "ciencias_químicas", prerrequisito: "Química General", aprobado: false }
+      { nombre: "General English III", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "General English II", aprobado: false }
     ]
   },
   {
     semestre: 4,
     asignaturas: [
-      { nombre: "Acuacultura I", creditos: 4, tipo: "práctica", area: "Formación Profesional", prerrequisito: "Ecología Marina", aprobado: false },
-      { nombre: "Biometría", creditos: 3, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "Estadística Aplicada", aprobado: false },
-      { nombre: "Pesquerías II", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Pesquerías I", aprobado: false },
-      { nombre: "Legislación Pesquera", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+      { nombre: "Diseño y Prototipado", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "30%", aprobado: false },
+      { nombre: "Ecología Acuática", creditos: 2, tipo: "teórica", area: "ciencias_biológicas", prerrequisito: "Biología de Rec. Acuáticos", aprobado: false },
+      { nombre: "Electricidad y Magnetismo", creditos: 4, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Calor y Ondas", aprobado: false },
+      { nombre: "Estadística Inferencial", creditos: 3, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Probabilidad y Estadística", aprobado: false },
+      { nombre: "Fisiología de Orgn, Acuáticos", creditos: 3, tipo: "teórica/práctica", area: "ciencias_biológicas", prerrequisito: "Biología de Rec. Acuáticos", aprobado: false },
+      { nombre: "Termodinámica", creditos: 3, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Calor y Ondas", aprobado: false },
+      { nombre: "General English IV", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "General English III", aprobado: false }
     ]
   },
   {
     semestre: 5,
     asignaturas: [
-      { nombre: "Tecnología de Productos Pesqueros", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Pesquerías II", aprobado: false },
-      { nombre: "Acuacultura II", creditos: 4, tipo: "práctica", area: "Formación Profesional", prerrequisito: "Acuacultura I", aprobado: false },
-      { nombre: "Sistemas de Información Geográfica", creditos: 3, tipo: "práctica", area: "Formación Aplicada", prerrequisito: "Oceanografía General", aprobado: false },
-      { nombre: "Electiva I", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+      { nombre: "Biología Pesquera", creditos: 3, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Estadística Inferencial", aprobado: false },
+      { nombre: "Bioquímica", creditos: 4, tipo: "teórica/práctica", area: "ciencias_químicas", prerrequisito: "Química Orgánica", aprobado: false }
+      { nombre: "Cultivo de Moluscos", creditos: 2, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Fisiología de Orgn. Acuáticos", aprobado: false },
+      { nombre: "Embarcaciones Pesqueras", creditos: 3, tipo: "teórica", area: "pesquerías", prerrequisito: "Estática", aprobado: false },
+      { nombre: "Mecánica de Fluidos", creditos: 4, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Ecuaciones Difernciales", aprobado: false },
+      { nombre: "General English V", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "General English IV", aprobado: 
     ]
   },
   {
     semestre: 6,
     asignaturas: [
-      { nombre: "Procesamiento de Recursos Pesqueros", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Tecnología de Productos Pesqueros", aprobado: false },
-      { nombre: "Gestión de Recursos Naturales", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Pesquerías II", aprobado: false },
-      { nombre: "Evaluación de Poblaciones Acuáticas", creditos: 4, tipo: "teórica", area: "Investigación", prerrequisito: "Biometría", aprobado: false },
-      { nombre: "Electiva II", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva I", aprobado: false }
+      { nombre: "Bromatología", creditos: 3, tipo: "teórica", area: "ciencias_químicas", prerrequisito: "Bioquímica", aprobado: false },
+      { nombre: "Cátedra Global", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
+      { nombre: "Cultivo de Crustaceos", creditos: 2, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Cultivo de Moluscos", aprobado: false },
+      { nombre: "Evaluación de Rec. Pesqueros", creditos: 2, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Biología Pesquera", aprobado: false },
+      { nombre: "Limnología", creditos: 2, tipo: "teórica", area: "ciencias_biológicas", prerrequisito: "Ecología Acuática", aprobado: false },
+      { nombre: "Metodología de la Investigación", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "Diseño y Prototipado", aprobado: false },
+      { nombre: "Navegación", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Embarcaciones Pesqueras", aprobado: false },
+      { nombre: "Operaciones Unitarias, creditos: 2, tipo: "teórica", area: "alimentos", prerrequisito: "Termodinámica", aprobado: false },
     ]
   },
   {
     semestre: 7,
     asignaturas: [
-      { nombre: "Planificación Pesquera", creditos: 4, tipo: "teórica", area: "Formación Profesional", prerrequisito: "Gestión de Recursos Naturales", aprobado: false },
-      { nombre: "Técnicas de Muestreo Marino", creditos: 4, tipo: "práctica", area: "Investigación", prerrequisito: "Evaluación de Poblaciones Acuáticas", aprobado: false },
-      { nombre: "Electiva III", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva II", aprobado: false },
-      { nombre: "Seminario de Investigación I", creditos: 3, tipo: "teórica", area: "Investigación", prerrequisito: "", aprobado: false }
+      { nombre: "Electiva I", creditos: 2, tipo: "teórica", area: "electivas_de_profundización", prerrequisito: "", aprobado: false },
+      { nombre: "Formación Humanística y Ciudadana", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
+      { nombre: "Génetica Aplic. a la Acuicultura", creditos: 3, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Bioquímica", aprobado: false },
+      { nombre: "Hidroacústica", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Embarcaciones Pesqueras", aprobado: false },
+      { nombre: "Ing. de Artes de Pesca I", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Embarcaciones Pesqueras", aprobado: false },
+      { nombre: "Microbiología de Alimentos", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Bromatología", aprobado: false },
+      { nombre: "Propuesta de Investigación", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "Metodología de la Investigación", aprobado: false },
+      { nombre: "Tecno. de Prod. Pesqueros I", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Bromatología", aprobado: false },
     ]
   },
   {
     semestre: 8,
     asignaturas: [
-      { nombre: "Política y Legislación Pesquera", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Legislación Pesquera", aprobado: false },
-      { nombre: "Gestión de Calidad en Productos del Mar", creditos: 4, tipo: "teórico/práctica", area: "Formación Aplicada", prerrequisito: "Procesamiento de Recursos Pesqueros", aprobado: false },
-      { nombre: "Seminario de Investigación II", creditos: 3, tipo: "teórica", area: "Investigación", prerrequisito: "Seminario de Investigación I", aprobado: false },
-      { nombre: "Electiva IV", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva III", aprobado: false }
+      { nombre: "Electiva II", creditos: 2, tipo: "teórica", area: "electivas_de_profundización", prerrequisito: "Electiva I", aprobado: false },
+      { nombre: "Economía Pesquera", creditos: 2, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Evaluación de Rec. Pesqueros", aprobado: false },
+      { nombre: "Extensión y Desarrollo Rural", creditos: 2, tipo: "teórica/práctica", area: "formación_complementaria", prerrequisito: "70%", aprobado: false },
+      { nombre: "Frio en la Industria Pesquera", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Operaciones Unitarias", aprobado: false },
+      { nombre: "Ing. de Artes de Pesca II", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Ing. de Artes de Pesca I", aprobado: false },
+      { nombre: "Nutrición de Orgn. Acuáticos", creditos: 2, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Microbiología", aprobado: false },
+      { nombre: "Proyecto Culminante de Diseño", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "Propuesta de Investigación", aprobado: false },
+      { nombre: "Tecno. de Prod. Pesqueros I", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Tecno. de Prod. Pesqueros I", aprobado: false },
     ]
   },
   {
     semestre: 9,
     asignaturas: [
-      { nombre: "Formulación y Evaluación de Proyectos Pesqueros", creditos: 4, tipo: "teórico/práctica", area: "Formación Profesional", prerrequisito: "Planificación Pesquera", aprobado: false },
-      { nombre: "Práctica Profesional I", creditos: 6, tipo: "práctica", area: "Formación Aplicada", prerrequisito: "60%", aprobado: false },
-      { nombre: "Electiva V", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva IV", aprobado: false },
-      { nombre: "Emprendimiento y Gestión Empresarial", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+      { nombre: "Cultivo de Peces", creditos: 3, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Limnología", aprobado: false },
+      { nombre: "Ética en Ingeniería Pesquera", creditos: 2, tipo: "teórica/práctica", area: "formación_complementaria", prerrequisito: "80%", aprobado: false },
+      { nombre: "Ingeniería de Proyectos", creditos: 3, tipo: "teórica/práctica", area: "formación_complementaria", prerrequisito: "70%", aprobado: false },
+      { nombre: "Modelado y Simulación de Ecosistemas", creditos: 3, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Evaluación de Rec. Pesqueros", aprobado: false },
+      { nombre: "Maquinaria Pesquera", creditos: 3, tipo: "teórica", area: "pesquerías", prerrequisito: "Ing. de Artes de Pesca I", aprobado: false },
+      { nombre: "Oceanografía Pesquera", creditos: 3, tipo: "teórica", area: "pesquerías", prerrequisito: "Ing. de Artes de Pesca I", aprobado: false },
+      { nombre: "Patología de Orgn. Acuáticos", creditos: 3, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Nutrición de Orgn. Acuáticos" aprobado: false },
     ]
   },
   {
     semestre: 10,
     asignaturas: [
-      { nombre: "Trabajo de Grado", creditos: 8, tipo: "teórico/práctica", area: "Investigación", prerrequisito: "Seminario de Investigación II", aprobado: false },
-      { nombre: "Práctica Profesional II", creditos: 6, tipo: "práctica", area: "Formación Aplicada", prerrequisito: "Práctica Profesional I", aprobado: false },
-      { nombre: "Electiva VI", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "Electiva V", aprobado: false }
+      { nombre: "Electiva III", creditos: 2, tipo: "teórico/práctica", area: "electivas_de_profundización", prerrequisito: "Electiva II", aprobado: false },
+      { nombre: "Instalaciones Acuícolas", creditos: 3, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Cultivo de Peces", aprobado: false },
+      { nombre: "Planta de Procesos Pesqueros", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Tecno. de Prod. Pesqueros II", aprobado: false }
     ]
   }
 ];
