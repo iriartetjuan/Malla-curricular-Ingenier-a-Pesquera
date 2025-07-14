@@ -66,21 +66,32 @@
     const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
 
     const coloresArea = {
-      formacion_general: "#2ecc71",
-      ciencias_basicas: "#e67e22",
-      formacion_profesional: "#3498db",
-      investigacion: "#9b59b6",
-      libre: "#1abc9c"
+      formación_general: "#C00000",
+      formación_complementaria: "#F96F07",
+      formación_segundo_idioma: "#D9E1F2",
+      formación_investigativa: "#808080",
+      ciencias_matemáticas: "#740063"
+      ciencias_físicas: "#FFC000",
+      ciencias_químicas: "#1F5616",
+      ciencias_biológicas: "#3C5D0F",
+      ciencias_estadísticas: "#29196B",
+      alimentos: "#FFD966"
+      pesquerías: "#192B4F",
+      acuicultura: "#245A8C",
+      electivas_de_profundización: "#A50021",
     };
 
     const mallaPesquera = [
   {
     semestre: 1,
     asignaturas: [
-      { nombre: "Matemática I", creditos: 5, tipo: "teórica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false },
-      { nombre: "Biología General", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false },
-      { nombre: "Química General", creditos: 4, tipo: "teórico/práctica", area: "Ciencias Básicas", prerrequisito: "", aprobado: false },
-      { nombre: "Introducción a la Ingeniería Pesquera", creditos: 3, tipo: "teórica", area: "Formación General", prerrequisito: "", aprobado: false }
+      { nombre: "Biología", creditos: 4, tipo: "teórica/práctica", area: "ciencias_biológicas", prerrequisito: "", aprobado: false },
+      { nombre: "Cálculo Integral", creditos: 4, tipo: "teórica", area: "ciencias_matemáticas", prerrequisito: "", aprobado: false },
+      { nombre: "Dibujo para Ingeniería", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
+      { nombre: "Introducción a la Ingeniería Pesquera", creditos: 2, tipo: "teórica", area: "formación_complementaria", prerrequisito: "", aprobado: false }
+      { nombre: "Procesos Lectores y Escriturales", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
+      { nombre: "Razonamiento y Representación Matemáticas", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
+      { nombre: "General English I", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "", aprobado: false }
     ]
   },
   {
