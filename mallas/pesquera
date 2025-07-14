@@ -64,6 +64,8 @@
   <script>
     const totalCreditos = 174;
     const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
+    const creditosNecesarios = Math.floor(totalCreditos * 0.7); // 70%
+    const creditosNecesarios = Math.floor(totalCreditos * 0.8); // 80%
 
 const coloresArea = {
   formación_general: "#c00000",
@@ -134,7 +136,7 @@ const coloresArea = {
     asignaturas: [
       { nombre: "Biología Pesquera", creditos: 3, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Estadística Inferencial", aprobado: false },
       { nombre: "Bioquímica", creditos: 4, tipo: "teórica/práctica", area: "ciencias_químicas", prerrequisito: "Química Orgánica", aprobado: false },
-      { nombre: "Cultivo de Moluscos", creditos: 2, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Fisiología de Orgn. Acuáticos", aprobado: false },
+      { nombre: "Cultivo de Moluscos", creditos: 2, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Fisiología de Orgn. Acuáticos", aprobado: false },
       { nombre: "Embarcaciones Pesqueras", creditos: 3, tipo: "teórica", area: "pesquerías", prerrequisito: "Estática", aprobado: false },
       { nombre: "Mecánica de Fluidos", creditos: 4, tipo: "teórica/práctica", area: "ciencias_físicas", prerrequisito: "Ecuaciones Diferenciales", aprobado: false },
       { nombre: "General English V", creditos: 2, tipo: "teórica", area: "formación_segundo_idioma", prerrequisito: "General English IV", aprobado: false }
@@ -145,7 +147,7 @@ const coloresArea = {
     asignaturas: [
       { nombre: "Bromatología", creditos: 3, tipo: "teórica", area: "ciencias_químicas", prerrequisito: "Bioquímica", aprobado: false },
       { nombre: "Cátedra Global", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
-      { nombre: "Cultivo de Crustaceos", creditos: 2, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Cultivo de Moluscos", aprobado: false },
+      { nombre: "Cultivo de Crustaceos", creditos: 2, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Cultivo de Moluscos", aprobado: false },
       { nombre: "Evaluación de Rec. Pesqueros", creditos: 2, tipo: "teórica", area: "ciencias_estadísticas", prerrequisito: "Biología Pesquera", aprobado: false },
       { nombre: "Limnología", creditos: 2, tipo: "teórica", area: "ciencias_biológicas", prerrequisito: "Ecología Acuática", aprobado: false },
       { nombre: "Metodología de la Investigación", creditos: 2, tipo: "teórica", area: "formación_investigativa", prerrequisito: "Diseño y Prototipado", aprobado: false },
