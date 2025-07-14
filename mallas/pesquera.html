@@ -200,7 +200,7 @@
   }
 ];
     
-    const contenedor = document.getElementById("contenedor-malla");
+ const contenedor = document.getElementById("contenedor-malla");
 
     function calcularCreditosAprobados() {
       return mallaPesquera.flatMap(s => s.asignaturas)
@@ -224,7 +224,7 @@
 
         const divSemestre = document.createElement("div");
         divSemestre.className = "semestre";
-        divSemestre.innerHTML = `<h2>Semestre ${semestre.semestre}</h2>`;
+        divSemestre.innerHTML = <h2>Semestre ${semestre.semestre}</h2>;
 
         const divAsignaturas = document.createElement("div");
         divAsignaturas.className = "asignaturas";
@@ -235,33 +235,44 @@
 
           if (asig.prerrequisito === "30%") {
             desbloqueada = creditosAprobados >= creditosNecesarios;
-            tooltip = `Requiere 30% de créditos: ${creditosNecesarios} (tienes ${creditosAprobados})`;
+            tooltip = Requiere 30% de créditos: ${creditosNecesarios} (tienes ${creditosAprobados});
           } else if (asig.prerrequisito) {
             desbloqueada = mallaPesquera.some(s =>
               s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
             );
             if (!desbloqueada) {
-              tooltip = `Requiere: ${asig.prerrequisito}`;
+              tooltip = Requiere: ${asig.prerrequisito};
             }
           }
 
           const card = document.createElement("div");
           card.className = "asignatura";
           card.style.backgroundColor = desbloqueada
-            ? coloresArea[asig.area] || "#aaa"
+            ? coloresArea[asig.area] || "#999"
             : "#ccc";
-          
-          card.innerHTML = `
-            <div class="nombre">${asig.nombre}</div>
-            <div class="tooltip">${tooltip}</div>
-          `;
+          card.style.pointerEvents = desbloqueada ? "auto" : "none";
+          if (tooltip) card.title = tooltip;
 
-          if (desbloqueada) {
-            card.onclick = () => {
-              asig.aprobado = !asig.aprobado;
-              renderMalla();
-            };
+          card.innerHTML = 
+            <div class="nombre">${asig.nombre}</div>
+            <div>Créditos: ${asig.creditos}</div>
+            <div>Tipo: ${asig.tipo}</div>
+            ${asig.prerrequisito && asig.prerrequisito !== "30%" ? <div>Prerrequisito: ${asig.prerrequisito}</div> : ""}
+          ;
+
+          if (asig.aprobado) {
+            const estrella = document.createElement("div");
+            estrella.className = "estrellita";
+            estrella.textContent = "⭐";
+            card.appendChild(estrella);
           }
+
+          card.addEventListener("click", () => {
+            if (!asig.aprobado && desbloqueada) {
+              asig.aprobado = true;
+              renderMalla();
+            }
+          });
 
           divAsignaturas.appendChild(card);
         });
