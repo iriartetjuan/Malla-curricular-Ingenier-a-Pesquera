@@ -158,7 +158,7 @@ const coloresArea = {
     asignaturas: [
       { nombre: "Electiva I", creditos: 2, tipo: "teórica", area: "electivas_de_profundización", prerrequisito: "", aprobado: false },
       { nombre: "Formación Humanística y Ciudadana", creditos: 2, tipo: "teórica", area: "formación_general", prerrequisito: "", aprobado: false },
-      { nombre: "Génetica Aplic. a la Acuicultura", creditos: 3, tipo: "teórica/práctica", area: "acuacultura", prerrequisito: "Bioquímica", aprobado: false },
+      { nombre: "Genética Aplic. a la Acuicultura", creditos: 3, tipo: "teórica/práctica", area: "acuicultura", prerrequisito: "Bioquímica", aprobado: false },
       { nombre: "Hidroacústica", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Embarcaciones Pesqueras", aprobado: false },
       { nombre: "Ing. de Artes de Pesca I", creditos: 2, tipo: "teórica", area: "pesquerías", prerrequisito: "Embarcaciones Pesqueras", aprobado: false },
       { nombre: "Microbiología de Alimentos", creditos: 3, tipo: "teórica", area: "alimentos", prerrequisito: "Bromatología", aprobado: false },
