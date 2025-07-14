@@ -1,1 +1,182 @@
-pesquera
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ingeniería Pesquera - Malla Curricular</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f8fb;
+      margin: 0;
+      padding: 1rem;
+    }
+    h1 {
+      text-align: center;
+    }
+    .semestre {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .semestre h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    .asignaturas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .asignatura {
+      flex: 1 1 calc(25% - 1rem);
+      padding: 1rem;
+      border-radius: 10px;
+      color: #fff;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .asignatura:hover {
+      transform: scale(1.03);
+    }
+    .asignatura .nombre {
+      font-weight: bold;
+    }
+    .asignatura .estrellita {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 1.5rem;
+    }
+    .tooltip {
+      font-size: 0.9rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Ingeniería Pesquera</h1>
+  <div id="contenedor-malla"></div>
+
+  <script>
+    const totalCreditos = 174;
+    const creditosNecesarios = Math.floor(totalCreditos * 0.3); // 30%
+
+    // Ejemplo realista (puedes reemplazar nombres y créditos exactos)
+    const mallaPesquera = [
+      {
+        semestre: 1,
+        asignaturas: [
+          { nombre: "Matemática I", creditos: 5, prerrequisito: "", aprobado: false },
+          { nombre: "Biología General", creditos: 4, prerrequisito: "", aprobado: false },
+          { nombre: "Química General", creditos: 4, prerrequisito: "", aprobado: false },
+          { nombre: "Introducción a la Ingeniería Pesquera", creditos: 3, prerrequisito: "", aprobado: false }
+        ]
+      },
+      {
+        semestre: 2,
+        asignaturas: [
+          { nombre: "Matemática II", creditos: 5, prerrequisito: "Matemática I", aprobado: false },
+          { nombre: "Bioquímica", creditos: 4, prerrequisito: "Química General", aprobado: false },
+          { nombre: "Ecología Marina", creditos: 4, prerrequisito: "Biología General", aprobado: false },
+          { nombre: "Física General", creditos: 4, prerrequisito: "", aprobado: false }
+        ]
+      },
+      {
+        semestre: 3,
+        asignaturas: [
+          { nombre: "Oceanografía General", creditos: 4, prerrequisito: "Ecología Marina", aprobado: false },
+          { nombre: "Pesquerías I", creditos: 4, prerrequisito: "Introducción a la Ingeniería Pesquera", aprobado: false },
+          { nombre: "Estadística Aplicada", creditos: 4, prerrequisito: "Matemática II", aprobado: false },
+          { nombre: "Oceanografía Pesquera", creditos: 5, prerrequisito: "30%", aprobado: false } // especial
+        ]
+      }
+      // Puedes continuar hasta semestre 10...
+    ];
+
+    const contenedor = document.getElementById("contenedor-malla");
+
+    function calcularCreditosAprobados() {
+      return mallaPesquera.flatMap(s => s.asignaturas)
+        .filter(a => a.aprobado)
+        .reduce((sum, a) => sum + a.creditos, 0);
+    }
+
+    function renderMalla() {
+      contenedor.innerHTML = "";
+
+      const creditosAprobados = calcularCreditosAprobados();
+      let desbloquearHasta = 1;
+
+      for (let i = 0; i < mallaPesquera.length - 1; i++) {
+        const algunaAprobada = mallaPesquera[i].asignaturas.some(a => a.aprobado);
+        if (algunaAprobada) desbloquearHasta = i + 2;
+      }
+
+      mallaPesquera.forEach((semestre, idx) => {
+        if (idx + 1 > desbloquearHasta) return;
+
+        const divSemestre = document.createElement("div");
+        divSemestre.className = "semestre";
+        divSemestre.innerHTML = `<h2>Semestre ${semestre.semestre}</h2>`;
+
+        const divAsignaturas = document.createElement("div");
+        divAsignaturas.className = "asignaturas";
+
+        semestre.asignaturas.forEach(asig => {
+          let desbloqueada = true;
+          let tooltip = "";
+
+          if (asig.prerrequisito === "30%") {
+            desbloqueada = creditosAprobados >= creditosNecesarios;
+            tooltip = `Requiere 30% de créditos: ${creditosNecesarios} (tienes ${creditosAprobados})`;
+          } else if (asig.prerrequisito) {
+            desbloqueada = mallaPesquera.some(s =>
+              s.asignaturas.some(a => a.nombre === asig.prerrequisito && a.aprobado)
+            );
+            if (!desbloqueada) {
+              tooltip = `Requiere: ${asig.prerrequisito}`;
+            }
+          }
+
+          const card = document.createElement("div");
+          card.className = "asignatura";
+          card.style.backgroundColor = desbloqueada ? "#3498db" : "#ccc";
+          card.style.pointerEvents = desbloqueada ? "auto" : "none";
+          if (tooltip) card.title = tooltip;
+
+          card.innerHTML = `
+            <div class="nombre">${asig.nombre}</div>
+            <div>Créditos: ${asig.creditos}</div>
+            ${asig.prerrequisito && asig.prerrequisito !== "30%" ? `<div>Prerrequisito: ${asig.prerrequisito}</div>` : ""}
+          `;
+
+          if (asig.aprobado) {
+            const estrella = document.createElement("div");
+            estrella.className = "estrellita";
+            estrella.textContent = "⭐";
+            card.appendChild(estrella);
+          }
+
+          card.addEventListener("click", () => {
+            if (!asig.aprobado && desbloqueada) {
+              asig.aprobado = true;
+              renderMalla();
+            }
+          });
+
+          divAsignaturas.appendChild(card);
+        });
+
+        divSemestre.appendChild(divAsignaturas);
+        contenedor.appendChild(divSemestre);
+      });
+    }
+
+    renderMalla();
+  </script>
+</body>
+</html>
