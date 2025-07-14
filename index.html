@@ -66,7 +66,7 @@
 <body>
   <h1>Malla Curricular de la Facultad</h1>
   <div class="selector-carrera">
-    <label for="carrera">Selecciona una carrera: </label>
+    <label for="carrera">Selecciona tu carrera: </label>
     <select id="carrera">
       <option value="">-- Selecciona --</option>
       <option value="pesquera">Ingeniería Pesquera</option>
@@ -81,26 +81,65 @@
         asignaturas: [
           {
             nombre: "Biología",
+            tipo: "Teórico/Práctico"
             area: "Ciencias Biológicas",
             creditos: 4,
             prerrequisito: "",
-            color: "#3498db",
+            color: "#3C5D0F",
             aprobado: false
           },
           {
-            nombre: "Matemática I",
-            area: "Ciencias Básicas",
-            creditos: 5,
-            prerrequisito: "",
-            color: "#e67e22",
-            aprobado: false
-          },
-          {
-            nombre: "Química General",
-            area: "Ciencias Básicas",
+            nombre: "Cálculo Diferencial",
+            tipo: "Teórico/Práctico"
+            area: "Ciencias Matemáticas",
             creditos: 4,
             prerrequisito: "",
-            color: "#2ecc71",
+            color: "#740063",
+            aprobado: false
+          },
+          {
+            nombre: "Dibujo para Ingeniería",
+            tipo: "Teórico",
+            area: "Formación General",
+            creditos: 2,
+            prerrequisito: "",
+            color: "#C00000",
+            aprobado: false
+          },
+          {
+            nombre: "Dibujo para Ingeniería",
+            tipo: "Teórico",
+            area: "Introducción a la Ingeniería Pesquera",
+            creditos: 2,
+            prerrequisito: "",
+            color: "#F96F07",
+            aprobado: false
+          },
+    {
+            nombre: "Cálculo Diferencial",
+            tipo: "Teórico/Práctico"
+            area: "Ciencias Matemáticas",
+            creditos: 4,
+            prerrequisito: "",
+            color: "#740063",
+            aprobado: false
+          },
+          {
+            nombre: "Dibujo para Ingeniería",
+            tipo: "Teórico",
+            area: "Formación General",
+            creditos: 2,
+            prerrequisito: "",
+            color: "#C00000",
+            aprobado: false
+          },
+          {
+            nombre: "General English I",
+            tipo: "Teórico",
+            area: "Formación Segundo Idioma",
+            creditos: 2,
+            prerrequisito: "",
+            color: "#D9E1F2",
             aprobado: false
           }
         ]
@@ -112,7 +151,7 @@
             nombre: "Matemática II",
             area: "Ciencias Básicas",
             creditos: 5,
-            prerrequisito: "Matemática I",
+            prerrequisito: "Cálculo Diferencial",
             color: "#1abc9c",
             aprobado: false
           },
